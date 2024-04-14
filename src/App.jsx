@@ -1,8 +1,11 @@
+import { BrowserRouter,Route } from "react-router-dom";
+
 export const App = () => {
   return (
-    <div>
-      <h1>My App</h1>
-      <p>Hello World!</p>
-    </div>
+    <BrowserRouter>
+      <Route path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
+    </BrowserRouter>
   );
 }
