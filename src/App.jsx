@@ -1,6 +1,6 @@
 import { BrowserRouter,Route } from "react-router-dom";
 
-export const App = () => {
+ const App = () => {
   return (
     <BrowserRouter>
       <Route path="/" component={Home} />
@@ -9,3 +9,5 @@ export const App = () => {
     </BrowserRouter>
   );
 }
+
+export default App;
