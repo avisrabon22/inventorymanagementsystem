@@ -8,4 +8,4 @@ export const App = () => {
       <Route path="/contact" component={Contact} />
     </BrowserRouter>
   );
-}
+};
