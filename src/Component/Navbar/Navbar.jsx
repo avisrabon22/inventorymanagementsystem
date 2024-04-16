@@ -9,7 +9,7 @@ export const Navbar = () => {
                   <NavLink
                     to="/dashboard"
                     className="text-white hover:text-gray-300"
-                    activeClassName="text-gray-300"
+                    
                   >
                     Dashboard
                   </NavLink>
@@ -18,7 +18,7 @@ export const Navbar = () => {
                   <NavLink
                     to="/profile"
                     className="text-white hover:text-gray-300"
-                    activeClassName="text-gray-300"
+                   
                   >
                     Profile
                   </NavLink>
@@ -27,7 +27,7 @@ export const Navbar = () => {
                   <NavLink
                     to="/products"
                     className="text-white hover:text-gray-300"
-                    activeClassName="text-gray-300"
+                   
                   >
                     Products
                   </NavLink>
@@ -36,11 +36,10 @@ export const Navbar = () => {
                   <NavLink
                     to="/orders"
                     className="text-white hover:text-gray-300"
-                    activeClassName="text-gray-300"
                   >
                     Orders
                   </NavLink>
-                </li>
+                </li> 
               </ul>
             </nav>
     )

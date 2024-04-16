@@ -15,7 +15,7 @@ import { Orders } from "./Pages/Orders/Orders";
       <Route path='/products' element={<Products/>} />
       <Route path='/orders' element={<Orders/>} />
       <Route path='/profile' element={<UserProfile/>} />
-      <Route element={<NotFound/>}/>
+      <Route path="*" element={<NotFound/>}/>
     </Routes>
     </Router>
   );
