@@ -1,4 +1,4 @@
-import { BrowserRouter,Routes,Route} from "react-router-dom";
+import { BrowserRouter as Router,Routes,Route} from "react-router-dom";
 import { Home } from "./Pages/Home/Home";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { UserProfile } from "./Pages/UserProfile/UserProfile";
@@ -8,16 +8,16 @@ import { Orders } from "./Pages/Orders/Orders";
 
  const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
     <Routes>
-      <Route exact path='/' component={Home} />
-      <Route path='/dashboard' component={Dashboard} />
-      <Route path='/products' component={Products} />
-      <Route path='/orders' component={Orders} />
-      <Route path='/profile' component={UserProfile} />
-      <Route Component={NotFound}/>
+      <Route  path='/' exact element={<Home/>} />
+      <Route path='/dashboard' element={<Dashboard/>} />
+      <Route path='/products' element={<Products/>} />
+      <Route path='/orders' element={<Orders/>} />
+      <Route path='/profile' element={<UserProfile/>} />
+      <Route element={<NotFound/>}/>
     </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
 export default App;
