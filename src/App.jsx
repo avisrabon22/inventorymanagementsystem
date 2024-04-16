@@ -1,11 +1,22 @@
-import { BrowserRouter,Route } from "react-router-dom";
+import { BrowserRouter,Routes,Route} from "react-router-dom";
+import { Home } from "./Pages/Home/Home";
+import { Dashboard } from "./Pages/Dashboard/Dashboard";
+import { UserProfile } from "./Pages/UserProfile/UserProfile";
+import { Products } from "./Pages/Products/Products";
+import { NotFound } from "./Pages/Exception/NotFound";
+import { Orders } from "./Pages/Orders/Orders";
 
  const App = () => {
   return (
     <BrowserRouter>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
+    <Routes>
+      <Route exact path='/' component={Home} />
+      <Route path='/dashboard' component={Dashboard} />
+      <Route path='/products' component={Products} />
+      <Route path='/orders' component={Orders} />
+      <Route path='/profile' component={UserProfile} />
+      <Route Component={NotFound}/>
+    </Routes>
     </BrowserRouter>
   );
 };
