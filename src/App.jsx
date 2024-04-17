@@ -5,6 +5,10 @@ import { UserProfile } from "./Pages/UserProfile/UserProfile";
 import { Products } from "./Pages/Products/Products";
 import { NotFound } from "./Pages/Exception/NotFound";
 import { Orders } from "./Pages/Orders/Orders";
+import { UserRegister } from "./Pages/UserProfile/UserRegister";
+import { AddProduct } from "./Pages/Products/AddProduct";
+import { UserAdmin } from "./Pages/UserProfile/UserAdmin";
+import { UserShipping } from "./Pages/UserProfile/UserShipping";
 
  const App = () => {
   return (
@@ -15,6 +19,10 @@ import { Orders } from "./Pages/Orders/Orders";
       <Route path='/products' element={<Products/>} />
       <Route path='/orders' element={<Orders/>} />
       <Route path='/profile' element={<UserProfile/>} />
+      <Route path='/admin' element={<UserAdmin/>}/>
+      <Route path='/shipping' element={<UserShipping/>}/>
+      <Route path='/register' element={<UserRegister/>}/>
+      <Route path='/addproduct' element={<AddProduct/>}/>
       <Route path="*" element={<NotFound/>}/>
     </Routes>
     </Router>
