@@ -1,4 +1,4 @@
-import { BrowserRouter as Router,Routes,Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./Pages/Home/Home";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { UserProfile } from "./Pages/UserProfile/UserProfile";
@@ -10,21 +10,21 @@ import { AddProduct } from "./Pages/Products/AddProduct";
 import { UserAdmin } from "./Pages/UserProfile/UserAdmin";
 import { UserShipping } from "./Pages/UserProfile/UserShipping";
 
- const App = () => {
+const App = () => {
   return (
     <Router>
-    <Routes>
-      <Route  path='/' exact element={<Home/>} />
-      <Route path='/dashboard' element={<Dashboard/>} />
-      <Route path='/products' element={<Products/>} />
-      <Route path='/orders' element={<Orders/>} />
-      <Route path='/profile' element={<UserProfile/>} />
-      <Route path='/admin' element={<UserAdmin/>}/>
-      <Route path='/shipping' element={<UserShipping/>}/>
-      <Route path='/register' element={<UserRegister/>}/>
-      <Route path='/addproduct' element={<AddProduct/>}/>
-      <Route path="*" element={<NotFound/>}/>
-    </Routes>
+      <Routes>
+        <Route path='/' exact element={<Home />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/orders' element={<Orders />} />
+        <Route path='/profile' element={<UserProfile />} />
+        <Route path='/admin' element={<UserAdmin />} />
+        <Route path='/shipping' element={<UserShipping />} />
+        <Route path='/register' element={<UserRegister />} />
+        <Route path='/addproduct' element={<AddProduct />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
     </Router>
   );
 };
