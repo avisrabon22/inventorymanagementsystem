@@ -7,7 +7,7 @@ export const Products = () => {
         <Navbar/>
         <div className="container mx-auto">
             <h2 className="flex justify-center text-2xl font-semibold mb-4">Products</h2>
-            <ProductList/>
+            <ProductList userRole="admin"/>
         </div>
         </>
     )

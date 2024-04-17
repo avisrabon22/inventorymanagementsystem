@@ -1,21 +1,41 @@
 import { useEffect, useState } from "react";
+import ProductService from "../../Services/ProductService";
 
-export const ProductList = () => {
-    const [products, setProducts] = useState();
+
+
+const ProductList = ({ userRole }) => {
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        // Call the getProducts method from the ProductService
-        // set the products state with the response
-        ProductService.getProducts().then((response) => {
-            setProducts(response);
-        });
+        ProductService.getProducts()
+            .then((response) => {
+                setProducts(response);
+            })
+            .catch((error) => {
+                console.error("Error fetching products:", error);
+            });
+    }, []);
+
+    const handleDelete = async (productId) => {
+        try {
+            await ProductService.deleteProduct(productId);
+            setProducts(products.filter(product => product.id !== productId));
+        } catch (error) {
+            console.error("Error deleting product:", error);
+        }
+    };
+
+    const handleEdit = async (productId) => {
+        try {
+            await ProductService.updateProduct(productId);
+            setProducts(products.filter(product => product.id !== productId));
+        } catch (error) {
+            console.error("Error deleting product:", error);
+        }
     }
-        , []);
-
-
 
     return (
-        <div className=" container mx-auto">
+        <div className="container mx-auto">
             <p className="flex justify-center m-2">Buy your products here</p>
             <table className="table-auto w-full">
                 <thead>
@@ -31,14 +51,22 @@ export const ProductList = () => {
                         <tr key={product.id}>
                             <td className="border px-4 py-2">{product.name}</td>
                             <td className="border px-4 py-2">{product.price}</td>
+                            <td className="border px-4 py-2">{product.category}</td>
                             <td className="border px-4 py-2">
-                                <button className="mr-2">Edit</button>
-                                <button>Delete</button>
+                                {userRole === "admin" && (
+                                    <>
+                                        <button className="mr-2" onClick={()=>handleEdit(product.id)}>Edit</button>
+                                        <button onClick={() => handleDelete(product.id)}>Delete</button>
+                                    </>
+                                )}
+                                {userRole === "customer" && <button>Buy</button>}
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
-    )
-}
+    );
+};
+
+export  {ProductList};
