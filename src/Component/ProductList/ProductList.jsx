@@ -1,7 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const ProductList = () => {
-    const [products,setProducts] = useState();
+    const [products, setProducts] = useState();
+
+    useEffect(() => {
+        // Call the getProducts method from the ProductService
+        // set the products state with the response
+        ProductService.getProducts().then((response) => {
+            setProducts(response);
+        });
+    }
+        , []);
+
 
 
     return (
@@ -17,17 +27,16 @@ export const ProductList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* Iterate over your products array and render a row for each product */}
-                    {/* { products.map((product) => ( */}
-                        {/* <tr key={product.id}>
+                    {products.map((product) => (
+                        <tr key={product.id}>
                             <td className="border px-4 py-2">{product.name}</td>
                             <td className="border px-4 py-2">{product.price}</td>
                             <td className="border px-4 py-2">
                                 <button className="mr-2">Edit</button>
                                 <button>Delete</button>
                             </td>
-                        </tr> */}
-                    {/* ))} */}
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
