@@ -34,16 +34,28 @@ const ProductList = ({ userRole }) => {
         }
     }
 
+    const handleAdd= async () => {
+        try {
+            await ProductService.addProduct();
+            setProducts(products.filter(product => product.id !== productId));
+        } catch (error) {
+            console.error("Error deleting product:", error);
+        }
+    }
+
     return (
         <div className="container mx-auto">
-            <p className="flex justify-center m-2">Buy your products here</p>
+           {userRole==="admin" && <button className="m-2" onClick={handleAdd}>Add Product</button>}
+            { userRole === "admin" && <h2 className="flex justify-center text-xl m-2">Manage your products</h2>}
+            { userRole === "customer" && <p className="flex justify-center m-2">Buy & View your products here</p>}
+           
             <table className="table-auto w-full">
-                <thead>
+                <thead className="border border-sky-200">
                     <tr>
-                        <th className="px-4 py-2">Product Name</th>
-                        <th className="px-4 py-2">Price</th>
-                        <th className="px-4 py-2">Category</th>
-                        <th className="px-4 py-2">Actions</th>
+                        <th className="px-4 py-2 border border-sky-200">Product Name</th>
+                        <th className="px-4 py-2 border border-sky-200">Price</th>
+                        <th className="px-4 py-2 border border-sky-200">Category</th>
+                        <th className="px-4 py-2 border border-sky-200">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
