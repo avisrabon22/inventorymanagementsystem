@@ -35,13 +35,10 @@ const ProductList = ({ userRole }) => {
     }
 
     const handleAdd= async () => {
-        try {
-            await ProductService.addProduct();
-            setProducts(products.filter(product => product.id !== productId));
-        } catch (error) {
-            console.error("Error deleting product:", error);
+                   // Redirect to add product page
+            // You can use a library like react-router-dom to handle the redirection
+            history.push('/addproduct');
         }
-    }
 
     return (
         <div className="container mx-auto">
@@ -54,16 +51,25 @@ const ProductList = ({ userRole }) => {
                     <tr>
                         <th className="px-4 py-2 border border-sky-200">Product Name</th>
                         <th className="px-4 py-2 border border-sky-200">Price</th>
+                        <th className="px-4 py-2 border border-sky-200">Description</th>
+                        <th className="px-4 py-2 border border-sky-200">Quantity</th>
                         <th className="px-4 py-2 border border-sky-200">Category</th>
+                        <th className="px-4 py-2 border border-sky-200">Bar Code</th>
+                        <th className="px-4 py-2 border border-sky-200">Image</th>
                         <th className="px-4 py-2 border border-sky-200">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {products.map((product) => (
                         <tr key={product.id}>
-                            <td className="border px-4 py-2">{product.name}</td>
+                            <td className="border px-4 py-2">{product.productName}</td>
                             <td className="border px-4 py-2">{product.price}</td>
-                            <td className="border px-4 py-2">{product.category}</td>
+                            <td className="border px-4 py-2">{product.description}</td>
+                            <td className="border px-4 py-2">{product.quantity}</td>
+                            <td className="border px-4 py-2">{product.productCategory}</td>
+                            <td className="border px-4 py-2">{product.barCode}</td>
+                            <td className="border px-4 py-2">{product.image}</td>
+
                             <td className="border px-4 py-2">
                                 {userRole === "admin" && (
                                     <>

@@ -1,5 +1,6 @@
 import ProductAPI  from "./api";
 const ProductService = {
+//   Products related methods **********************************************************************
     getProducts: async () => {
         try {
             return await ProductAPI.getProducts();
@@ -34,6 +35,20 @@ const ProductService = {
         } catch (error) {
             throw error;
         }
-    }
+    },
+    // Categories related methods **********************************************************************
+    getCategories: async () => {
+        try {
+            return await ProductAPI.getCategories();
+        } catch (error) {
+            throw error;
+        }
+    },
+    get getCategories() {
+        return this._getCategories;
+    },
+    set getCategories(value) {
+        this._getCategories = value;
+    },
 };
 export  default ProductService;

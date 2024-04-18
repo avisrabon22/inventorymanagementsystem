@@ -1,11 +1,13 @@
 import axios from "axios";
 
-const PRODUCT_URL = "http://localhost:8080/api/v1";
+const PRODUCT_URL = "http://localhost:8080/api/v1/products";
+const CATEGORY_URL = "http://localhost:8080/api/v1/categories";
 
 const ProductAPI = {
+//  products related methods **********************************************************************
     getProducts: async () => {
         try {
-            const response = await axios.get(`${PRODUCT_URL}/products`);
+            const response = await axios.get(`${PRODUCT_URL}/get_all_products`);
             return response.data;
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -44,7 +46,18 @@ const ProductAPI = {
             console.error("Error deleting product:", error);
             throw error;
         }
-    }
+    },
+//  categories related methods **********************************************************************
+    getCategories: async () => {
+        try {
+            const response = await axios.get(`${CATEGORY_URL}/get_all_categories`);
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+            throw error;
+        }
+    },
+
 };
 
 export default ProductAPI;
