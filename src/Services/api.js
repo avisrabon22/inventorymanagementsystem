@@ -28,7 +28,7 @@ const ProductAPI = {
     // Add product
     addProduct: async (product) => {
         try {
-            await axios.post(`${PRODUCT_URL}/add_product`, product);
+           return  await axios.post(`${PRODUCT_URL}/add_product`, product);
         } catch (error) {
             console.error("Error adding product:", error);
             throw error;
@@ -66,7 +66,8 @@ const ProductAPI = {
     // Add category
     addCategory: async (category) => {
         try {
-            await axios.post(`${CATEGORY_URL}/add_category`, category);
+            const response = await axios.post(`${CATEGORY_URL}/add_category`, category)
+                return response;
         } catch (error) {
             console.error("Error adding category:", error);
             throw error;

@@ -21,7 +21,7 @@ const ProductService = {
     // Add product
     addProduct: async (product) => {
         try {
-            await ProductAPI.addProduct(product);
+            return await ProductAPI.addProduct(product);
         } catch (error) {
             throw error;
         }
@@ -55,7 +55,8 @@ const ProductService = {
     // Add category
     addCategory: async (category) => {
         try {
-            await ProductAPI.addCategory(category);
+            const response = await ProductAPI.addCategory(category);
+            return response;
         } catch (error) {
             throw error;
         }
