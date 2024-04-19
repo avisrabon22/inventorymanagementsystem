@@ -4,7 +4,8 @@ const PRODUCT_URL = "http://localhost:8080/api/v1/products";
 const CATEGORY_URL = "http://localhost:8080/api/v1/categories";
 
 const ProductAPI = {
-//  products related methods **********************************************************************
+    //  products related methods **********************************************************************
+    // Get all products
     getProducts: async () => {
         try {
             const response = await axios.get(`${PRODUCT_URL}/get_all_products`);
@@ -14,6 +15,7 @@ const ProductAPI = {
             throw error;
         }
     },
+    // Get product by id
     getProduct: async (productId) => {
         try {
             const response = await axios.get(`${PRODUCT_URL}/products/${productId}`);
@@ -23,14 +25,16 @@ const ProductAPI = {
             throw error;
         }
     },
+    // Add product
     addProduct: async (product) => {
         try {
-            await axios.post(`${PRODUCT_URL}/products`, product);
+            await axios.post(`${PRODUCT_URL}/add_product`, product);
         } catch (error) {
             console.error("Error adding product:", error);
             throw error;
         }
     },
+    // Update product
     updateProduct: async (product) => {
         try {
             await axios.put(`${PRODUCT_URL}/products/${product.id}`, product);
@@ -39,6 +43,7 @@ const ProductAPI = {
             throw error;
         }
     },
+    // Delete product
     deleteProduct: async (productId) => {
         try {
             await axios.delete(`${PRODUCT_URL}/products/${productId}`);
@@ -47,13 +52,23 @@ const ProductAPI = {
             throw error;
         }
     },
-//  categories related methods **********************************************************************
+    //  categories related methods **********************************************************************
+    //  Get all categories   
     getCategories: async () => {
         try {
             const response = await axios.get(`${CATEGORY_URL}/get_all_categories`);
-            return response.data;
+            return response;
         } catch (error) {
             console.error("Error fetching categories:", error);
+            throw error;
+        }
+    },
+    // Add category
+    addCategory: async (category) => {
+        try {
+            await axios.post(`${CATEGORY_URL}/add_category`, category);
+        } catch (error) {
+            console.error("Error adding category:", error);
             throw error;
         }
     },

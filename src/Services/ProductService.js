@@ -1,6 +1,8 @@
-import ProductAPI  from "./api";
+import ProductAPI from "./api";
 const ProductService = {
-//   Products related methods **********************************************************************
+    //   Products related methods **********************************************************************
+
+    //  Get all products
     getProducts: async () => {
         try {
             return await ProductAPI.getProducts();
@@ -8,6 +10,7 @@ const ProductService = {
             throw error;
         }
     },
+    // Delete product
     deleteProduct: async (productId) => {
         try {
             await ProductAPI.deleteProduct(productId);
@@ -15,6 +18,7 @@ const ProductService = {
             throw error;
         }
     },
+    // Add product
     addProduct: async (product) => {
         try {
             await ProductAPI.addProduct(product);
@@ -22,6 +26,7 @@ const ProductService = {
             throw error;
         }
     },
+    // Update product
     updateProduct: async (product) => {
         try {
             await ProductAPI.updateProduct(product);
@@ -29,6 +34,7 @@ const ProductService = {
             throw error;
         }
     },
+    // Get product by id
     getProduct: async (productId) => {
         try {
             return await ProductAPI.getProduct(productId);
@@ -37,6 +43,7 @@ const ProductService = {
         }
     },
     // Categories related methods **********************************************************************
+    // get all categories
     getCategories: async () => {
         try {
             return await ProductAPI.getCategories();
@@ -44,11 +51,14 @@ const ProductService = {
             throw error;
         }
     },
-    get getCategories() {
-        return this._getCategories;
-    },
-    set getCategories(value) {
-        this._getCategories = value;
+
+    // Add category
+    addCategory: async (category) => {
+        try {
+            await ProductAPI.addCategory(category);
+        } catch (error) {
+            throw error;
+        }
     },
 };
-export  default ProductService;
+export default ProductService;

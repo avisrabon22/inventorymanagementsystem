@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import ProductService from "../../Services/ProductService";
-
+import { useNavigate } from "react-router-dom";
 
 
 const ProductList = ({ userRole }) => {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
 
+    // Fetch products from backend API
     useEffect(() => {
         ProductService.getProducts()
             .then((response) => {
@@ -16,6 +18,7 @@ const ProductList = ({ userRole }) => {
             });
     }, []);
 
+    // Delete product 
     const handleDelete = async (productId) => {
         try {
             await ProductService.deleteProduct(productId);
@@ -25,6 +28,7 @@ const ProductList = ({ userRole }) => {
         }
     };
 
+    // Edit product
     const handleEdit = async (productId) => {
         try {
             await ProductService.updateProduct(productId);
@@ -34,16 +38,29 @@ const ProductList = ({ userRole }) => {
         }
     }
 
+    // Add product
     const handleAdd= async () => {
                    // Redirect to add product page
             // You can use a library like react-router-dom to handle the redirection
-            history.push('/addproduct');
+            navigate('/addproduct');
+        }
+
+        // add category
+        const handleAddCategory = async () => {
+            // Redirect to add category page
+            navigate('/addcategory');
         }
 
     return (
         <div className="container mx-auto">
-           {userRole==="admin" && <button className="m-2" onClick={handleAdd}>Add Product</button>}
-            { userRole === "admin" && <h2 className="flex justify-center text-xl m-2">Manage your products</h2>}
+           {userRole==="admin" &&
+              <>
+              <button className="m-2 active:bg-blue-500 hover:bg-sky-700 rounded-sm border border-sky-500 bg-sky-300" onClick={handleAdd}>Add Product</button>
+              <button className="m-2 active:bg-blue-500 hover:bg-sky-700 rounded-sm border border-sky-500 bg-sky-300" onClick={handleAddCategory}>Add Category</button>
+              <h2 className="flex justify-center text-xl m-2">Manage your products</h2>
+              </>
+              }
+              
             { userRole === "customer" && <p className="flex justify-center m-2">Buy & View your products here</p>}
            
             <table className="table-auto w-full">
