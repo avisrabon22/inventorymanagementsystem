@@ -57,7 +57,7 @@ const ProductList = ({ userRole }) => {
               <>
               <button className="m-2 active:bg-blue-500 hover:bg-sky-700 rounded-sm border border-sky-500 bg-sky-300" onClick={handleAdd}>Add Product</button>
               <button className="m-2 active:bg-blue-500 hover:bg-sky-700 rounded-sm border border-sky-500 bg-sky-300" onClick={handleAddCategory}>Add Category</button>
-              <h2 className="flex justify-center text-xl m-2">Manage your products</h2>
+              <h2 className="flex justify-center text-xl font-bold m-2">Manage your products</h2>
               </>
               }
 
