@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Navbar } from "../../Component/Navbar/Navbar"
 import ProductService from "../../Services/ProductService";
-import { toast } from "react-toastify";
+import {notifySuccess,notifyError} from "../../Utils/Notification";
+
 
 export const AddCategory = () => {
     const [category, setCategory] = useState({
@@ -21,11 +22,15 @@ export const AddCategory = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-             ProductService.addCategory(category).then((response) => {
-                toast.success(response.data);
-            }).catch((error) => {
-                console.error("Error adding category:", error);
-            });
+            try 
+            {
+                const response = ProductService.addCategory(category);
+                   notifySuccess((await response).data);
+            } 
+            catch(error){
+               
+             
+            };
     
         // Clear form
         setCategory({

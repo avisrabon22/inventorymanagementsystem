@@ -60,7 +60,7 @@ const ProductList = ({ userRole }) => {
               <h2 className="flex justify-center text-xl m-2">Manage your products</h2>
               </>
               }
-              
+
             { userRole === "customer" && <p className="flex justify-center m-2">Buy & View your products here</p>}
            
             <table className="table-auto w-full">
@@ -93,6 +93,7 @@ const ProductList = ({ userRole }) => {
                                         <button className="mr-2" onClick={()=>handleEdit(product.id)}>Edit</button>
                                         <button onClick={() => handleDelete(product.id)}>Delete</button>
                                     </>
+                                    
                                 )}
                                 {userRole === "customer" && <button>Buy</button>}
                             </td>
