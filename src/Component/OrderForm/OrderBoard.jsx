@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrderBoard = ({  }) => {
+const OrderBoard = ({ userRole }) => {
     // Assuming you have an array of orders
     const orders = [
         { id: 1, name: 'Order 1', user: 'User A' },

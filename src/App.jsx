@@ -10,6 +10,7 @@ import { AddProduct } from "./Pages/Products/AddProduct";
 import { UserAdmin } from "./Pages/UserProfile/UserAdmin";
 import { UserShipping } from "./Pages/UserProfile/UserShipping";
 import { AddCategory } from "./Pages/Category/AddCategory";
+import { Cart } from "./Pages/Cart/Cart";
 
 
 const App = () => {
@@ -25,7 +26,8 @@ const App = () => {
         <Route path='/shipping' element={<UserShipping />} />
         <Route path='/register' element={<UserRegister />} />
         <Route path='/addproduct' element={<AddProduct />} />
-        <Route path="/addcategory" element={<AddCategory/>}/>
+        <Route path="/addcategory" element={<AddCategory />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>

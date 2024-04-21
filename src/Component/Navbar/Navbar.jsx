@@ -30,6 +30,16 @@ export const Navbar = () => {
         <li>
         <h1 className="text-white text-center text-xl mb-2">
           <NavLink
+          to="/cart"
+          className="text-white hover:text-gray-300"
+          >
+          Cart
+          </NavLink>
+        </h1>
+        </li>
+        <li>
+        <h1 className="text-white text-center text-xl mb-2">
+          <NavLink
           to="/orders"
           className="text-white hover:text-gray-300"
           >

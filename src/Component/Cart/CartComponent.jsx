@@ -12,8 +12,8 @@ export const CartComponent = () => {
     };
 
     return (
-        <div>
-            <h1>Your Cart</h1>
+        <div className=" justify-center flex items-center">
+        
             {(cartItems.length === 0 )?( 
                 <p>Your cart is empty.</p>
             ) : (
