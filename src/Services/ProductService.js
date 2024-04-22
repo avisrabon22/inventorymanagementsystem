@@ -1,4 +1,4 @@
-import ProductAPI from "./api";
+import ProductAPI from "./ProductApi";
 const ProductService = {
     //   Products related methods **********************************************************************
 
@@ -6,6 +6,13 @@ const ProductService = {
     getProducts: async () => {
         try {
             return await ProductAPI.getProducts();
+        } catch (error) {
+            throw error;
+        }
+    },
+    getProductByUserId: async (userId) => {
+        try {
+            return await ProductAPI.getProductByUserId(userId);
         } catch (error) {
             throw error;
         }

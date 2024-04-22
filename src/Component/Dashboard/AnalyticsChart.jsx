@@ -1,21 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLegend } from 'victory';
-import ProductAPI from '../../Services/api';
+import ProductService from '../../Services/ProductService';
+import { OrderService } from '../../Services/OrderService';
 
-const AnalyticsSummary = () => {
-  // Sample data for product summary
+const AnalyticsSummary = ({ userRole }) => {
+  const [product, setProduct] = useState([]);
+  const []=userState
 
-const [product,setProduct] = useState([]);
+  useEffect(() => {
+    if (userRole === 'admin') {
+      ProductService.getProducts
+        .then(res => res.json())
+        .then(data => setProduct(data))
+        .catch(err => console.log(err))
+    } else if (userRole === 'customer') {
+      ProductService.getProductByUserId
+        .then(res => res.json())
+        .then(data => setProduct(data))
+        .catch(err => console.log(err))
 
-useEffect(() => {
-    ProductAPI.getProducts
-    .then(res=>res.json())
-    .then(data=>setProduct(data))
-    .catch(err=>console.log(err))
-}
-,[])
+    }
+  }
+    , [])
 
-  
+    useEffect(() => {
+      if(userRole==='admin'){
+        OrderService.getOrders()
+        .then((res)=>{
+          res.data;
+        })
+        ;
+
+      }}
+    )
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -32,7 +49,7 @@ useEffect(() => {
             tickFormat={(x) => `${x}`}
           />
           <VictoryBar
-            data={productData}
+            data={product}
             x="product"
             y="quantity"
             // Custom styling

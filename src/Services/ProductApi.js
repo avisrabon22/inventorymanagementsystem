@@ -3,6 +3,7 @@ import axios from "axios";
 const PRODUCT_URL = "http://localhost:8080/api/v1/products";
 const CATEGORY_URL = "http://localhost:8080/api/v1/categories";
 
+
 const ProductAPI = {
     //  products related methods **********************************************************************
     // Get all products
@@ -10,6 +11,15 @@ const ProductAPI = {
         try {
             const response = await axios.get(`${PRODUCT_URL}/get_all_products`);
             // console.log(response.data);
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching products:", error);
+            throw error;
+        }
+    },
+    getProductByUserId: async (userId) => {
+        try {
+            const response = await axios.get(`${PRODUCT_URL}/get_products_by_user_id/${userId}`);
             return response.data;
         } catch (error) {
             console.error("Error fetching products:", error);
