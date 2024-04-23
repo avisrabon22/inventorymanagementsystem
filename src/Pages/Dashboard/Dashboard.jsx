@@ -10,9 +10,9 @@ export const Dashboard = () => {
         <>
         <Navbar />
         <div className="container mx-auto">
-            <h2 className="text-2xl font-semibold mb-4 flex justify-center">Welcome to your dashboard</h2>
+            <h2 className="text-2xl font-semibold mb-4 flex justify-center">Welcome to your Inventory Management Dashboard</h2>
           <DashboardComponent userRole="admin"/>
-          <AnalyticsChart userRole="admin"/>
+          <AnalyticsChart userRole="admin" />
         </div>
         </>
     )

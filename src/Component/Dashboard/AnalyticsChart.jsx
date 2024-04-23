@@ -5,34 +5,40 @@ import { OrderService } from '../../Services/OrderService';
 
 const AnalyticsSummary = ({ userRole }) => {
   const [product, setProduct] = useState([]);
-  const []=userState
+  const [order, setOrder] = useState([]);
 
   useEffect(() => {
     if (userRole === 'admin') {
-      ProductService.getProducts
-        .then(res => res.json())
-        .then(data => setProduct(data))
+      ProductService.getProducts()
+      .then((res) => {
+        const data = res.map((product) => ({
+          product: product.productName,
+          quantity: product.quantity,
+        }));
+        setProduct(data);
+      })
         .catch(err => console.log(err))
     } else if (userRole === 'customer') {
-      ProductService.getProductByUserId
-        .then(res => res.json())
-        .then(data => setProduct(data))
+      ProductService.getProductByUserId()
+        .then((res) => setProduct(res))
         .catch(err => console.log(err))
-
     }
   }
     , [])
 
-    useEffect(() => {
-      if(userRole==='admin'){
-        OrderService.getOrders()
-        .then((res)=>{
-          res.data;
-        })
-        ;
+  useEffect(() => {
+    if (userRole === 'admin') {
+      OrderService.getOrders()
+        .then(res => setOrder(res))
+        .catch(err => console.log(err))
+    } else if (userRole === 'customer') {
+      OrderService.getOrderByUserId()
+        .then(res => setOrder(res))
+        .catch(err => console.log(err))
+    }
+  }
+    , [])
 
-      }}
-    )
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -63,7 +69,7 @@ const AnalyticsSummary = ({ userRole }) => {
         <VictoryChart domainPadding={20} height={300}>
           <VictoryAxis
             // Independent axis
-            tickValues={orderData.map((d) => d.status)}
+            tickValues={order.map((d) => d.status)}
           />
           <VictoryAxis
             dependentAxis
@@ -71,7 +77,7 @@ const AnalyticsSummary = ({ userRole }) => {
             tickFormat={(x) => `${x}`}
           />
           <VictoryBar
-            data={orderData}
+            data={order}
             x="status"
             y="count"
             // Custom styling

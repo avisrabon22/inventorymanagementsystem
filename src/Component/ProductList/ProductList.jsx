@@ -18,6 +18,16 @@ const ProductList = ({ userRole }) => {
             });
     }, []);
 
+    // handle buy
+    const handleBuy = async (productId) => {
+        try {
+            await ProductService.buyProduct(productId);
+            setProducts(products.filter(product => product.id !== productId));
+        } catch (error) {
+            console.error("Error buying product:", error);
+        }
+    };
+
     // Delete product 
     const handleDelete = async (productId) => {
         try {
